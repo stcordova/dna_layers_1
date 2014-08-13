@@ -15,7 +15,7 @@ public class Dna_layers_1 {
 
     Dna_layers_1() {
         DNA_strand dna_strand = new DNA_strand();
-        Nucleotide_display nucleotide_display = new Nucleotide_display(dna_strand.nucleotide_array);
+        Nucleotide_display nucleotide_display = new Nucleotide_display(dna_strand.nucleotide_array,dna_strand.number_nucleotides);
 
         JFrame nucleotide_frame = new JFrame("Nucleotide Display");
         nucleotide_frame.add(nucleotide_display);
