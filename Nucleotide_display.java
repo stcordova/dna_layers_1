@@ -65,9 +65,15 @@ public class Nucleotide_display extends JPanel {
         
     }
     
+    void update_slider_position( int slider_position_val){
+        
+    }
+    
     Nucleotide_display(char[] dna_array, int number_nucleotides_val) {
+        super();
         dna_array_ptr = dna_array;
         number_nucleotides = number_nucleotides_val;
+        
         
     }
 }
