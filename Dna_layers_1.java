@@ -15,6 +15,8 @@ public class Dna_layers_1 {
 
     Dna_layers_1() throws InterruptedException {
         DNA_strand dna_strand = new DNA_strand();
+        Nucleosome_windings nucleosome_windings = new Nucleosome_windings();
+        
         Nucleotide_display nucleotide_display = new Nucleotide_display(dna_strand.nucleotide_array,dna_strand.number_nucleotides);
 
         JFrame nucleotide_frame = new JFrame("Nucleotide Display");
@@ -32,7 +34,7 @@ public class Dna_layers_1 {
         slider_frame.setVisible(true);
         slider_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Layer_view layer_view = new Layer_view(dna_strand.nucleotide_array,dna_strand.number_nucleotides);
+        Layer_view layer_view = new Layer_view(dna_strand.nucleotide_array,nucleosome_windings.nucleosome_windings_array,dna_strand.number_nucleotides);
 
         JFrame layer_view_frame = new JFrame("Layer view");
         layer_view_frame.setLocation(400, 200);

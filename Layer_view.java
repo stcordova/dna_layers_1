@@ -20,7 +20,7 @@ public class Layer_view extends JPanel{
     int number_nucleotides = 0;
     int slider_position = 0;
     char[] dna_array_ptr;
-
+    char[] nucleosome_windings_ptr;
     
     void update_slider_position( int slider_position_val){
         slider_position = slider_position_val;
@@ -98,6 +98,40 @@ public class Layer_view extends JPanel{
     }
         
     }
+
+    void draw_nucleosome_windings (Graphics g){
+            int font_size = 15;
+
+           g.setFont(new Font("TimesRoman", Font.PLAIN, font_size));
+    
+    int top_left_x = 0;
+    int top_left_y = font_size * 2;
+    
+    for (int i = 0; i < 200; i++) {
+       top_left_x = i * font_size;
+       char cur_char = nucleosome_windings_ptr[i + slider_position];
+       switch ( cur_char ){
+           case ' ':
+                g.setColor(Color.BLACK); 
+               break;
+           
+           case '%':
+                g.setColor(Color.DARK_GRAY); 
+               break;
+
+               
+           default:
+               g.setColor(Color.BLACK); 
+               break;
+       }
+    g.fillRect(top_left_x, top_left_y,font_size, font_size);
+    g.setColor(Color.YELLOW);
+    g.drawString(String.valueOf(cur_char), top_left_x+ (int)(.25*font_size), top_left_y+(int) (.85*font_size));
+    
+    
+    }
+    
+    }
     
     void draw_complimentary_section(Graphics g){
         
@@ -127,13 +161,16 @@ public class Layer_view extends JPanel{
     public void paint(Graphics g) {
         super.paint(g);
         draw_DNA_section(g);
-        
+        draw_nucleosome_windings(g);
         
     }
     
-    Layer_view(char[] dna_array, int number_nucleotides_val){
+    Layer_view(char[] dna_array, 
+            char[] nucleosome_windings_array,
+            int number_nucleotides_val){
         super();
         dna_array_ptr = dna_array;
+        nucleosome_windings_ptr = nucleosome_windings_array;
         number_nucleotides = number_nucleotides_val;        
     }
     
