@@ -42,6 +42,7 @@ public class Dna_layers_1 {
         layer_view_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
           while (true) {
+            layer_view.update_slider_position(dna_slider.slider_value);
             layer_view.repaint();        
             nucleotide_display.repaint();
             Thread.sleep(50);

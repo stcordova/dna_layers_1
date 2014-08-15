@@ -18,30 +18,82 @@ import javax.swing.JPanel;
 public class Layer_view extends JPanel{
     
     int number_nucleotides = 0;
-
+    int slider_position = 0;
     char[] dna_array_ptr;
 
     
     void update_slider_position( int slider_position_val){
-        
+        slider_position = slider_position_val;
     }    
   
     void draw_DNA_section(Graphics g){
             int font_size = 15;
 
             g.setFont(new Font("TimesRoman", Font.PLAIN, font_size));
+    char complementary_char = 'N';
+    int top_left_x = 0;
+    int top_left_y = 0;
+    
+    for (int i = 0; i < 200; i++) {
+       top_left_x = i * font_size;
+       char cur_char = dna_array_ptr[i + slider_position];
+       switch ( cur_char ){
+           case 'A':
+                g.setColor(Color.BLACK); 
+               break;
+           
+           case 'C':
+                g.setColor(Color.RED); 
+               break;
 
-    for (int i = 0; i < 30; i++) {
-    g.setColor(Color.BLACK); 
-    g.fillRect(25+font_size*0+font_size*i*4, 12 , 15*4,15);    
+           case 'G':
+                g.setColor(Color.GREEN); 
+               break;
+               
+           case 'T':
+                g.setColor(Color.BLUE); 
+               break;
+
+               
+           default:
+               g.setColor(Color.GRAY); 
+               break;
+       }
+    g.fillRect(top_left_x, top_left_y,font_size, font_size);
     g.setColor(Color.WHITE);
-    g.drawString("A", 25+font_size*0+font_size*i*4,25);    
-    g.setColor(Color.red);      
-    g.drawString("C", 25+font_size*1+font_size*i*4,25);
-    g.setColor(Color.green);      
-    g.drawString("G", 25+font_size*2+font_size*i*4,25);
-    g.setColor(Color.BLUE);      
-    g.drawString("T", 25+font_size*3+font_size*i*4,25);
+    g.drawString(String.valueOf(cur_char), top_left_x+ (int)(.25*font_size), top_left_y+(int) (.85*font_size));
+    
+    
+       switch ( cur_char ){
+           case 'A':
+               complementary_char = 'T';
+                g.setColor(Color.BLUE); 
+               break;
+           
+           case 'C':
+               complementary_char = 'G';
+                g.setColor(Color.GREEN); 
+               break;
+
+           case 'G':
+               complementary_char = 'C';
+                g.setColor(Color.RED); 
+               break;
+               
+           case 'T':
+               complementary_char = 'A';
+                g.setColor(Color.BLACK); 
+               break;
+
+               
+           default:
+               complementary_char = 'N';
+               g.setColor(Color.GRAY);                
+               break;
+       }
+    g.fillRect(top_left_x, top_left_y + font_size,font_size, font_size);
+    g.setColor(Color.WHITE);
+    g.drawString(String.valueOf(complementary_char), top_left_x+ (int)(.25*font_size), top_left_y+(int) (.85*font_size)+font_size);
     
     }
         
