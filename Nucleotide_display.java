@@ -17,8 +17,8 @@ public class Nucleotide_display extends JPanel {
 
     int origin_x = 50;
     int origin_y = 50;
-    int skixel_width = 10;
-    int skixel_height = 10;
+    int skixel_width = 2;
+    int skixel_height = skixel_width;
     int number_nucleotides = 0;
     int raster_width = 40;
     char[] dna_array_ptr;
@@ -29,7 +29,7 @@ public class Nucleotide_display extends JPanel {
 //                String text1 = Integer.toString(slider_val);
 //g.drawString("test", x, y);
         int dna_start = 0;
-        int dna_stop = 1000;
+        int dna_stop = 10000;
         int row_number = 0;
         int top_left_x = 0;
         int top_left_y = 0;
