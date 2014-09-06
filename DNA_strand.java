@@ -35,7 +35,7 @@ public class DNA_strand {
 
     DNA_strand() {
         fasta_file_name = "default test file, repeat acgtn ";
-        int iterations = 1000 * 1000 * 10;
+        int iterations = 1000 * 1000 * 1;
         number_nucleotides = iterations * 5;
         nucleotide_array = new char[number_nucleotides];
         for (int i = 0; i < iterations; i++) {
